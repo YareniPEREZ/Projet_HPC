@@ -21,7 +21,7 @@ __developer__='Yareni PEREZ'
 __email__='yareni.duranthon@etu.uca.fr'
 
 echo 'Quality control'
-
+#jdkdjdk
 # Handling errors
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error
