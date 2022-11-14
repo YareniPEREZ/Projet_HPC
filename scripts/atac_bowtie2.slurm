@@ -1,4 +1,6 @@
 #!/bin/bash
+
+##########this script permit to align seq to reference genome #####
 ##SBATCH --time=5:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
