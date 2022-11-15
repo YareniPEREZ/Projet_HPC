@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --mem=30G
-#SBATCH --cpus-per-task=6   # Nb of threads we want to run on
+#SBATCH --cpus-per-task=1  # Nb of threads we want to run on
 #SBATCH -o Projet_HPC/log/slurmjob-%A-%a
 #SBATCH --job-name=macs2_atac
 #SBATCH --partition=short
@@ -63,7 +63,7 @@ echo "Identification of DNA access sites with MACS2" >&2
 # Args -f <character> : Format of the input files
 # Args -n <character> : Name of the output files
 
-macs2 callpeak -t "${tab[SLURM_ARRAY_TASK_ID]}" -f BAM  -n "$SHORTNAME" --outdir "$SCRATCHDIR"
+macs2 callpeak -t "${tab[SLURM_ARRAY_TASK_ID]}" -f BAM -g mm -n "$SHORTNAME" --outdir "$SCRATCHDIR"
 
 #Move results from scratch to user one's directory
 mv  "$SCRATCHDIR" "$OUTPUT"
