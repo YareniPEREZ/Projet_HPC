@@ -9,6 +9,8 @@
 #SBATCH --partition=short
 #SBATCH --array=0-11
 
+
+##### evaluation of the quality of the sequences before applying any treatment to the data ##### 
 # Program configuration
 __author__='Nadia Goué'
 __email__='nadia.goue@uca.fr'
