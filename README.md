@@ -2,11 +2,15 @@ README.md
 
 Yareni PEREZ 
 
-objective :  Identifier les régions du génome accessibles à la transcription alors que l'ADN s'ouvre et se détache du complexe nucléosomique par un analyse de ATAC-seq
+Project_HPC 
+
+objective :  
+Identify the genomic regions accessible by the DNA during the transcription. In order to do this, we re-analyzed the ATAC-seq results from 
+a publication of 2019 ("STATegra, a comprehensive multi-omics dataset of B-cell differentiation in mouse" David Gomez-Cabrero et al. 2019 https://doi.org/10.1038/s41597-019-0202-7).
+The analyse was performed on a B3 murine cellular line from the mouse model the pre-B1 stage. After the nuclear translocation of the transcription factor Ikaros, those cells grow to the pre-BII stage. During this stage, the B cells progenitor are subject to a growth arrest and a differentiation. This B3 cell line was transduced by a retroviral pathway with a vector coding for a fusion protein, Ikaros-REt2, which can control nuclear levels of Ikaros after exposition to the Tamoxifen drug. After this treatment, the cultures were collected at t=0h and t=24h.
 
 
 Recuperation des données 
-
 A set of scripts are copied from /home/users/teacher/atacseq/scripts/*.slurm  into home/users/studentXX/atacseq/scripts.These scripts will be modified later in order to be adapted to our dataset.
 
 
@@ -15,6 +19,20 @@ parallel 'zcat {} | head -n 4000 | gzip >
 /home/users/student08/atacseq/data/test.{/.}.gz' :::
 /home/users/shared/data/atacseq/data/subset/ss_50k*
 
+Experimental design
+About 50 000 cells were collected for each sample. There are 3 biological replicates by sample : R1, R2 and R3 Each of the biological replicates was performed for the two cellular stages : 0h and 24h In total, 
+6 samples were studied (3 replicates for t=0h and 3 replicates for t=24h)
+Each of these samples were sequenced by an Illumina sequencing with Nextera-based sequencing primers. Considering that the sequencing was performed in paired-end, each of the 6 samples has a forward result file and a reverse result file. So, in total, 12 samples were collected for the analysis
+
+Raw dataset :
+
+SRR4785152    50k_0h_R1_1     0.6G    50k_0h_R1_2     0.6G
+SRR4785153    50k_0h_R2_1     0.5G    50k_0h_R2_2     0.6G
+SRR4785154    50k_0h_R3_1     0.6G    50k_0h_R3_2     0.6G
+
+SRR4785341    50k_24h_R1_1    0.5G    50k_24h_R1_2    0.5G
+SRR4785342    50k_24h_R2_1    0.5G    50k_24h_R2_2    0.5G
+SRR4785343    50k_24h_R3_1    0.5G    50k_24h_R3_2    0.5G
 
 WORKFLOW 
 1. Pré-processing des données  Contrôle Qualité des données et nettoyage des Reads :
