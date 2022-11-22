@@ -7,7 +7,7 @@
 #SBATCH -o Projet_HPC/log/slurmjob-%A-%a
 #SBATCH --job-name=qc_atac
 #SBATCH --partition=short
-#SBATCH --array=0-23
+#SBATCH --array=0-11
 
 # Program configuration
 __author__='Nadia Goué'
@@ -40,7 +40,7 @@ echo "Set up directories ..." >&2
 DATA_DIR="$HOME"/Projet_HPC/results/trim
 
 echo "Set up an array with all fastq.gz sequence files..." >&2
-tab=($(ls "$DATA_DIR"/*/*trim*.fastq.gz))
+tab=($(ls "$DATA_DIR"/*/*trim_paired.fastq.gz))
 echo "tab = " >&2
 printf '%s\n' "${tab[@]}" >&2
 

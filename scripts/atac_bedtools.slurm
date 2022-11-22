@@ -79,15 +79,14 @@ TWENTY_FOUR="$OUTPUT"/ss_50k_24h_trim_mapped_sorted_q2_nodup_merged_peaks.bed
 
 echo "Identification of common DNA access sites with intersect from bedtools" >&2
 # Args -a and -b : Path to the input BAM files to analyze
-# Args -wa : For each overlap, write the original entry of -a
 # Args -v : Returns entries in -a that have no overlap in -b
 
-bedtools intersect -wa -a "$ZERO" -b "$TWENTY_FOUR" > ss_50k_trim_mapped_sorted_q2_nodup_common.bed
+bedtools intersect -a "$ZERO" -b "$TWENTY_FOUR" > ss_50k_trim_mapped_sorted_q2_nodup_common.bed
 
 echo "Identification of unique DNA access sites with intersect from bedtools" >&2
 
-bedtools intersect -wa -v -a "$ZERO" -b "$TWENTY_FOUR" > ss_50k_trim_mapped_sorted_q2_nodup_Oh_unique.bed
-bedtools intersect -wa -v -a "$TWENTY_FOUR" -b "$ZERO" > ss_50k_trim_mapped_sorted_q2_nodup_24h_unique.bed
+bedtools intersect -v -a "$ZERO" -b "$TWENTY_FOUR" > ss_50k_trim_mapped_sorted_q2_nodup_Oh_unique.bed
+bedtools intersect -v -a "$TWENTY_FOUR" -b "$ZERO" > ss_50k_trim_mapped_sorted_q2_nodup_24h_unique.bed
 
 #Move results from scratch to user one's directory
 mv  "$SCRATCHDIR" "$OUTPUT"
