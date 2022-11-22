@@ -40,13 +40,13 @@ Each of these samples were sequenced by an Illumina sequencing with Nextera-base
 
 Raw dataset :
 
-SRR4785152    50k_0h_R1_1     0.6G    50k_0h_R1_2     0.6G
-SRR4785153    50k_0h_R2_1     0.5G    50k_0h_R2_2     0.6G
-SRR4785154    50k_0h_R3_1     0.6G    50k_0h_R3_2     0.6G
+SRR4785152&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R1_1&nbsp;&nbsp;&nbsp;&nbsp;0.6G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R1_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G
+SRR4785153&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R2_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R2_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G
+SRR4785154&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R3_1&nbsp;&nbsp;&nbsp;&nbsp;0.6G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R3_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G
 
-SRR4785341    50k_24h_R1_1    0.5G    50k_24h_R1_2    0.5G
-SRR4785342    50k_24h_R2_1    0.5G    50k_24h_R2_2    0.5G
-SRR4785343    50k_24h_R3_1    0.5G    50k_24h_R3_2    0.5G
+SRR4785341&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R1_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R1_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G
+SRR4785342&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R2_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R2_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G
+SRR4785343&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R3_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R3_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G
 
 
 ### WORKFLOW and tools 
