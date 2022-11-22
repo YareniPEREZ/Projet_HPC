@@ -9,8 +9,6 @@
 #SBATCH --partition=short
 #SBATCH --array=0-11
 
-
-##### evaluation of the quality of the sequences before applying any treatment to the data ##### 
 # Program configuration
 __author__='Nadia Goué'
 __email__='nadia.goue@uca.fr'
@@ -19,8 +17,12 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
+__developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
+
+
+### Quality control before trimming quality control on the raw data in order to see the general quality
+
 
 echo 'Quality control'
 
@@ -40,7 +42,7 @@ echo "Set up directories ..." >&2
 # Set up data and result directories
 # Run QC on raw data and an trimmed data
 
-DATA_DIR=/home/users/shared/data/atacseq/data/subset
+DATA_DIR=/home/users/shared/data/atacseq/data/raw
 
 echo "Set up an array with all fastq.gz sequence files..." >&2
 tab=($(ls "$DATA_DIR"/*.fastq.gz))
@@ -81,4 +83,3 @@ mv "$SCRATCHDIR" "$OUTPUT"
 rm -rf  "$SCRATCHDIR"
 
 echo "Stop job : "`date` >&2
-

@@ -2,8 +2,8 @@
 #SBATCH --time=0:30:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=30G
-#SBATCH --cpus-per-task=1  # Nb of threads we want to run on
+#SBATCH --mem=5G
+#SBATCH --cpus-per-task=1   # Nb of threads we want to run on
 #SBATCH -o Projet_HPC/log/slurmjob-%A-%a
 #SBATCH --job-name=macs2_atac
 #SBATCH --partition=short
@@ -17,8 +17,11 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
+__developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
+
+
+#### Determine DNA accessibility sites cell stage 
 
 echo 'Identification of DNA access sites with MACS2'
 
@@ -62,6 +65,7 @@ echo "Identification of DNA access sites with MACS2" >&2
 # Args --outdir <file> : Path to where the output files should be writen
 # Args -f <character> : Format of the input files
 # Args -n <character> : Name of the output files
+# Args -g <character> : Specify the length of the genome
 
 macs2 callpeak -t "${tab[SLURM_ARRAY_TASK_ID]}" -f BAM -g mm -n "$SHORTNAME" --outdir "$SCRATCHDIR"
 

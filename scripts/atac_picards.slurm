@@ -2,7 +2,7 @@
 #SBATCH --time=0:30:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=30G
+#SBATCH --mem=15G
 #SBATCH --cpus-per-task=6   # Nb of threads we want to run on
 #SBATCH -o Projet_HPC/log/slurmjob-%A-%a
 #SBATCH --job-name=picards_atac
@@ -17,8 +17,11 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
+__developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
+
+
+### Elimination of duplicates in order to remove biases related to PCR amplification.
 
 echo 'Elimination of duplicates with the picard tool MarkDuplicates'
 
@@ -79,9 +82,3 @@ samtools idxstats "$SHORTNAME"_nodup.bam > $OUTPUT/"$SHORTNAME".log
 mv  "$SCRATCHDIR" "$OUTPUT"
 
 echo "Stop job : "`date` >&2
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-

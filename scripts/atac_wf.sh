@@ -1,7 +1,9 @@
 #! /bin/bash
 #cd "$(dirname "$0")"
 
-echo 'CHAMARET Quentin (Universite Clermont Auvergne)'
+
+echo 'Workflow'
+echo 'Yareni Duranthon (Perez) en colaborant avec Quentin Chamaret et Nour Larifi (Universite Clermont Auvergne)'
 echo 'Date: Fall Master course 2021 '
 echo 'Object: Sample case of ATACseq workflow showing job execution and dependency handling.'
 echo 'Inputs: paths to scripts qc, trim, bowtie2, picard, MACS2'

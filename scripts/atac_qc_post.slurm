@@ -17,9 +17,11 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
+__developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
 
+
+### Quality control after trimming Second quality control to identify if the overall quality of the samples has been improved.
 echo 'Quality control'
 
 # Handling errors

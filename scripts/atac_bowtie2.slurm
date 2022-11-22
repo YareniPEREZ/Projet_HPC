@@ -1,6 +1,4 @@
 #!/bin/bash
-
-##########this script permit to align seq to reference genome #####
 ##SBATCH --time=5:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -19,8 +17,11 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
+__developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
+
+
+#### The cleaned reads will be mapped to the mouse reference genome (GRCm39 assembly)
 
 echo 'Alignment with bowtie2'
 

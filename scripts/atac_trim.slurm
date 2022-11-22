@@ -17,8 +17,13 @@ __license__='GPL3'
 __maintainer__='Nadia Goué'
 __status__='Development'
 __version__='0.0.1'
-__developer__='Yareni PEREZ'
-__email__='yareni.duranthon@etu.uca.fr'
+__developer__='Yareni Duranthon (PEREZ)'
+__email__='yareni.duranthon'
+
+
+### Trimming To clean the data we will proceed to a trimming of the adapters with the trimmomatic function. 
+### using a file that contains the sequences of the adapters and imposing a minimum 
+### size of reads equal to 33 nucleotides.
 
 echo 'Quality control and trimming'
 
@@ -46,7 +51,7 @@ mkdir -p -m 700 "$SCRATCHDIR"
 cd "$SCRATCHDIR"
 
 #Set up data directory
-DATA_DIR=/home/users/shared/data/atacseq/data/subset
+DATA_DIR=/home/users/shared/data/atacseq/data/raw
 CLIPS_DIR=/home/users/shared/data/atacseq/data/
 
 #Run the program

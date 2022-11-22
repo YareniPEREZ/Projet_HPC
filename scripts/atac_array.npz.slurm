@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --time=5:30:00
+#SBATCH --time=5:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=10G
+#SBATCH --mem=15G
 #SBATCH --cpus-per-task=6   # Nb of threads we want to run on
 #SBATCH -o Projet_HPC/log/slurmjob-%A-%a
 #SBATCH --job-name=deeptools_atac
@@ -19,10 +19,6 @@ __status__='Development'
 __version__='0.0.1'
 __developer__='Yareni Duranthon (Perez)'
 __email__='yareni.duranthon@etu.uca.fr'
-
-
-#### Utilisation of deepTools for the exploration of the results obtained 
-#### after removal duplicated perform statistical analyzes (coverage, read length correlation) between the
 
 echo 'Use of the deepTools to analyze data'
 
@@ -61,21 +57,23 @@ echo "shortname = $SHORTNAME" >&2
 # Run the program
 echo "Start on $SLURMD_NODENAME: "`date` >&2
 
-echo "bamCoverage in order to see the coverage on the genome from each sample"
-# Args -b <file> : Path to the input BAM file
+echo "multiBamSummary to combine the BAM files into one" >&2
+# Args --bamfiles <file> : Path to the input BAM files to analyze
 # Args -o <file> : Path to where the output files should be writen
-# Args -of <character> : Choose whether the output will be in Bigwig or in bedgraph format
 
-bamCoverage -b "${tab[$SLURM_ARRAY_TASK_ID]}" -o "$SHORTNAME".bedgraph -of bedgraph
+multiBamSummary bins --bamfiles "${tab[@]}" -o "$OUTPUT"/array.npz
 
-echo "bamPEFragmentSize to compare the reads length according to the samples"
-# Args -b <file> : Path to the input BAM files
-# Args -o <file> : Path to where the output should be writen
-# Args --samplesLabels <character> : Rename the samples by these labels
-# Args --table <file> : Give the metrics in a tabular format
+#Set up the path to the aggregate file
+NPZ_FILE="$OUTPUT"/array.npz
 
-bamPEFragmentSize -b "${tab[@]}" --samplesLabel 0h_R1 0h_R2 0h_R3 24h_R1 24h_R2 24h_R3 --table "$OUTPUT"/table.tsv \
- -o "$OUTPUT"/hist.png
+echo "plotCorrelation in order to see the correlation between samples" >&2
+# Args -in <file> : Path to the aggregated BAM file
+# Args -o <file> : Path to where the output files should be writen
+# Args -p <character> : Choose whether you want to plot a heatmap or a scatterplot
+# Args -c <character> : Choose whether to use the pearson or the spearman coefficient
+# Args --removeOutliers : Will remove outliers from the samples
+
+plotCorrelation -in "$NPZ_FILE" -p heatmap --plotNumbers -c pearson -o "$OUTPUT"/heatmap.png --removeOutliers
 
 #Move results from scratch to user one's directory
 mv  "$SCRATCHDIR" "$OUTPUT"
