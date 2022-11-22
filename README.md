@@ -87,12 +87,12 @@ Script :
 Utilisation of deepTools for the exploration of the results obtained after removal duplicated
 perform statistical analyzes (coverage, read length correlation) between the samples
 
-script : 
-*atac_deeptools.slurm : deepTools
-	- multiBamSummary : compiles the different BAM files (required for plotCorrelation)
-	- plotCorrelation :  identifie les corrélations entre échantillons
-	- bamCoverage : analyzes the coverage on the genome of the samples
-	- bamPEFragmentSize : Comparison of read sizes across samples
+script : <br>
+* atac_deeptools.slurm : deepTools <br>
+	- multiBamSummary : compiles the different BAM files (required for plotCorrelation)<br>
+	- plotCorrelation :  identifie les corrélations entre échantillons<br>
+	- bamCoverage : analyzes the coverage on the genome of the samples<br>
+	- bamPEFragmentSize : Comparison of read sizes across samples<br>
 
 7. Identification of chromatin access sites
 In order to define unique and common DNA accessibility sites between cell stages, we used two different tools, MACS2 and Bedtools. 
