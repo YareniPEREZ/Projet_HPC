@@ -27,7 +27,7 @@ The analyse was performed on a B3 murine cellular line from the mouse model the 
 ## Materials and methods 
  
 ### Data recovery 
-A set of scripts are copied from /home/users/teacher/atacseq/scripts/*.slurm  into home/users/studentXX/atacseq/scripts.These scripts will be modified later in order to be adapted to our dataset.
+A set of scripts are copied from /home/users/teacher/atacseq/scripts/*.slurm  into home/users/studentXX/atacseq/scripts.These scripts will be modified later in order to be adapted to our dataset with the original data 
 Subset of 4000 lines equivalent to 1000 sequences created from the original subset in order to be pushed into the git repository using this command line :
 parallel 'zcat {} | head -n 4000 | gzip >
 /home/users/student08/atacseq/data/test.{/.}.gz' :::
