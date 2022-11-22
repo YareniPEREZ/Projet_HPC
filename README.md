@@ -1,8 +1,7 @@
 READme.md
 
-Yareni PEREZ 
-
-#Project_HPC 
+Yareni PEREZ<br>
+# Project_HPC 
 
 ## Introduction
  
@@ -28,7 +27,7 @@ The analyse was performed on a B3 murine cellular line from the mouse model the 
 ## Materials and methods 
  
 ### Data recovery 
-A set of scripts are copied from /home/users/teacher/atacseq/scripts/*.slurm  into home/users/studentXX/atacseq/scripts.These scripts will be modified later in order to be adapted to our dataset.
+A set of scripts are copied from /home/users/teacher/atacseq/scripts/*.slurm  into home/users/studentXX/atacseq/scripts.These scripts will be modified later in order to be adapted to our dataset with the original data 
 Subset of 4000 lines equivalent to 1000 sequences created from the original subset in order to be pushed into the git repository using this command line :
 parallel 'zcat {} | head -n 4000 | gzip >
 /home/users/student08/atacseq/data/test.{/.}.gz' :::
@@ -41,63 +40,67 @@ Each of these samples were sequenced by an Illumina sequencing with Nextera-base
 
 Raw dataset :
 
-SRR4785152    50k_0h_R1_1     0.6G    50k_0h_R1_2     0.6G
-SRR4785153    50k_0h_R2_1     0.5G    50k_0h_R2_2     0.6G
-SRR4785154    50k_0h_R3_1     0.6G    50k_0h_R3_2     0.6G
+SRR4785152&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R1_1&nbsp;&nbsp;&nbsp;&nbsp;0.6G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R1_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G<br>
+SRR4785153&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R2_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R2_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G<br>
+SRR4785154&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R3_1&nbsp;&nbsp;&nbsp;&nbsp;0.6G&nbsp;&nbsp;&nbsp;&nbsp;50k_0h_R3_2&nbsp;&nbsp;&nbsp;&nbsp;0.6G<br>
 
-SRR4785341    50k_24h_R1_1    0.5G    50k_24h_R1_2    0.5G
-SRR4785342    50k_24h_R2_1    0.5G    50k_24h_R2_2    0.5G
-SRR4785343    50k_24h_R3_1    0.5G    50k_24h_R3_2    0.5G
+SRR4785341&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R1_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R1_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G<br>
+SRR4785342&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R2_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R2_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G<br>
+SRR4785343&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R3_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R3_2&nbsp;&nbsp;&nbsp;&nbsp;0.5G<br>
 
 
 ### WORKFLOW and tools 
 
-1. Quality control before trimming
-quality control on the raw data in order to see the general quality
-
+#### 1. Quality control before trimming
+quality control on the raw data in order to see the general quality<br>
 Script : 
 * atac_qc_init.slurm : tool Fastqc
 
-2. Trimming
-To clean the data we will proceed to a trimming of the adapters
-with the trimmomatic function. using a file that contains the sequences of the adapters and imposing a minimum size of reads equal to 33 nucleotides.
 
+
+#### 2. Trimming
+To clean the data we will proceed to a trimming of the adapters
+with the trimmomatic function. using a file that contains the sequences of the adapters and imposing a minimum size of reads equal to 33 nucleotides.<br>
 Script : 
 * atac_trim.slurm : : tool Trimmomatic
 
-3. Quality control after trimming
-Second quality control to identify if the overall quality of the samples has been improved. 
 
+
+#### 3. Quality control after trimming
+Second quality control to identify if the overall quality of the samples has been improved.<br> 
 Script :
 * atac_qc_post.slurm : tool Fastqc
 
-4. Mapping 
-the cleaned reads will be mapped to the mouse reference genome (GRCm39 assembly)
 
+
+#### 4. Mapping
+the cleaned reads will be mapped to the mouse reference genome (GRCm39 assembly)<br>
 Script
 * atac_bowtie2.slurm : tool Bowtie2
 
-5. Removal of duplicates
-elimination of duplicates in order to remove biases related to PCR amplification.
 
+
+#### 5. Removal of duplicates
+elimination of duplicates in order to remove biases related to PCR amplification.<br>
 Script : 
 * atac_picards.slurm : this with the help of the MarkDuplicates function of the picard module
 
 
-6. Data mining 
+
+#### 6. Data mining 
 Utilisation of deepTools for the exploration of the results obtained after removal duplicated
-perform statistical analyzes (coverage, read length correlation) between the samples
+perform statistical analyzes (coverage, read length correlation) between the samples.<br>
+script : <br>
+* atac_deeptools.slurm : deepTools <br>
+	- multiBamSummary : compiles the different BAM files (required for plotCorrelation)<br>
+	- plotCorrelation :  identifie les corrélations entre échantillons<br>
+	- bamCoverage : analyzes the coverage on the genome of the samples<br>
+	- bamPEFragmentSize : Comparison of read sizes across samples<br>
 
-script : 
-*atac_deeptools.slurm : deepTools
-	- multiBamSummary : compiles the different BAM files (required for plotCorrelation)
-	- plotCorrelation :  identifie les corrélations entre échantillons
-	- bamCoverage : analyzes the coverage on the genome of the samples
-	- bamPEFragmentSize : Comparison of read sizes across samples
 
-7. Identification of chromatin access sites
-In order to define unique and common DNA accessibility sites between cell stages, we used two different tools, MACS2 and Bedtools. 
 
+#### 7. Identification of chromatin access sites
+In order to define unique and common DNA accessibility sites between cell stages, we used two different tools, MACS2 and Bedtools.<br>
 Scripts
 * atac_macs2.slurm : determine DNA accessibility sites with the tool MACS2
 * atac_bedtools.slurm : determine common and unique DNA accessibility sites with the tool BedTools
