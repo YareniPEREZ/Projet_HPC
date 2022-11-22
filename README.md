@@ -52,7 +52,7 @@ SRR4785343&nbsp;&nbsp;&nbsp;&nbsp;50k_24h_R3_1&nbsp;&nbsp;&nbsp;&nbsp;0.5G&nbsp;
 ### WORKFLOW and tools 
 
 #### 1. Quality control before trimming
-quality control on the raw data in order to see the general quality
+quality control on the raw data in order to see the general quality<br>
 Script : 
 * atac_qc_init.slurm : tool Fastqc
 
@@ -60,28 +60,28 @@ Script :
 
 #### 2. Trimming
 To clean the data we will proceed to a trimming of the adapters
-with the trimmomatic function. using a file that contains the sequences of the adapters and imposing a minimum size of reads equal to 33 nucleotides.
+with the trimmomatic function. using a file that contains the sequences of the adapters and imposing a minimum size of reads equal to 33 nucleotides.<br>
 Script : 
 * atac_trim.slurm : : tool Trimmomatic
 
 
 
 #### 3. Quality control after trimming
-Second quality control to identify if the overall quality of the samples has been improved. 
+Second quality control to identify if the overall quality of the samples has been improved.<br> 
 Script :
 * atac_qc_post.slurm : tool Fastqc
 
 
 
 #### 4. Mapping
-the cleaned reads will be mapped to the mouse reference genome (GRCm39 assembly)
+the cleaned reads will be mapped to the mouse reference genome (GRCm39 assembly)<br>
 Script
 * atac_bowtie2.slurm : tool Bowtie2
 
 
 
 #### 5. Removal of duplicates
-elimination of duplicates in order to remove biases related to PCR amplification.
+elimination of duplicates in order to remove biases related to PCR amplification.<br>
 Script : 
 * atac_picards.slurm : this with the help of the MarkDuplicates function of the picard module
 
@@ -89,7 +89,7 @@ Script :
 
 #### 6. Data mining 
 Utilisation of deepTools for the exploration of the results obtained after removal duplicated
-perform statistical analyzes (coverage, read length correlation) between the samples
+perform statistical analyzes (coverage, read length correlation) between the samples.<br>
 script : <br>
 * atac_deeptools.slurm : deepTools <br>
 	- multiBamSummary : compiles the different BAM files (required for plotCorrelation)<br>
@@ -100,7 +100,7 @@ script : <br>
 
 
 #### 7. Identification of chromatin access sites
-In order to define unique and common DNA accessibility sites between cell stages, we used two different tools, MACS2 and Bedtools. 
+In order to define unique and common DNA accessibility sites between cell stages, we used two different tools, MACS2 and Bedtools.<br>
 Scripts
 * atac_macs2.slurm : determine DNA accessibility sites with the tool MACS2
 * atac_bedtools.slurm : determine common and unique DNA accessibility sites with the tool BedTools
